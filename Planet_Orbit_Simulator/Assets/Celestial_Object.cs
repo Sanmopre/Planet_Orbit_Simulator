@@ -7,13 +7,13 @@ public class Celestial_Object : MonoBehaviour
     public Rigidbody Rb;
     float G = 0.00000000000667f;
 
-    public Vector3 Initial_Force;
+    public Vector3 Initial_Velocity;
     Vector3 Current_Force;
 
 
     private void Start()
     {
-        Rb.AddForce(Initial_Force);
+        Rb.velocity = Initial_Velocity;
     }
 
 
