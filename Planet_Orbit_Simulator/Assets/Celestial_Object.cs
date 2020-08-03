@@ -5,9 +5,7 @@ using UnityEngine;
 public class Celestial_Object : MonoBehaviour
 {
     public Rigidbody Rb;
-    public Rigidbody Other_Celestial;
     float G = 0.00000000000667f;
-    public float Mass_Multiplier = 100;
 
     public Vector3 Initial_Force;
     Vector3 Current_Force;
@@ -18,14 +16,12 @@ public class Celestial_Object : MonoBehaviour
         Rb.AddForce(Initial_Force);
     }
 
-    public void Update()
-    {
-        Current_Force = Get_Force();
-        Rb.AddForce(Current_Force);
+
+    public void Apply_Force(Vector3 force) {
+        Rb.AddForce(force);
     }
 
-
-    private Vector3 Get_Force() {
+    public Vector3 Get_Force(Rigidbody Other_Celestial, float Mass_Multiplier) {
         Vector3 force = Vector3.zero;
         Vector3 unit_vec;
 
