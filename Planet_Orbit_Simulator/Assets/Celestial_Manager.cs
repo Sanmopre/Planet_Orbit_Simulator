@@ -19,7 +19,6 @@ public class Celestial_Manager : MonoBehaviour
                     Final_Force = Final_Force + celestialObjects[i].Get_Force(celestialObjects[j].Rb, Mass_Multiplier);
                 }
             
-            
             }
             celestialObjects[i].Apply_Force(Final_Force);
         }
