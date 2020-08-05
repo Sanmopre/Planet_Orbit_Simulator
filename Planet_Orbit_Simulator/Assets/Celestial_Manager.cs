@@ -27,4 +27,19 @@ public class Celestial_Manager : MonoBehaviour
         }
     }
 
+
+    public Vector3 Get_Force_At_Planet(Celestial_Object planet)
+    {
+        Vector3 Total_Force = Vector3.zero;
+
+        for (int i = 0; i < celestialObjects.Length; i++) {
+            if (planet.celestial_name != celestialObjects[i].celestial_name) {
+                Total_Force = Total_Force + planet.Get_Force(celestialObjects[i].Rb, Mass_Multiplier);
+            }
+        }
+
+        return Total_Force;
+    }
+
+
 }

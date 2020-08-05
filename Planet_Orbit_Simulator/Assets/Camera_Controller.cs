@@ -10,7 +10,7 @@ public class Camera_Controller : MonoBehaviour
 
     public Transform Camera;
 
-    private GameObject Current_Planet;
+    public GameObject Current_Planet;
     float mouseX, mouseY;
 
     public bool focused_on_planet = false;

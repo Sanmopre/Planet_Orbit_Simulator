@@ -6,7 +6,7 @@ public class Celestial_Object : MonoBehaviour
 {
     public Rigidbody Rb;
     float G = 0.000000000006674f;
-
+    public string celestial_name;
     public Vector3 Initial_Velocity;
     Vector3 Current_Force;
 
