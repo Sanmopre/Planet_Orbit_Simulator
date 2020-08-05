@@ -10,7 +10,7 @@ public class Camera_Controller : MonoBehaviour
 
     public Transform Camera;
 
-    private GameObject Cel_Obj;
+    private GameObject Current_Planet;
     float mouseX, mouseY;
 
     public bool focused_on_planet = false;
@@ -76,8 +76,8 @@ public class Camera_Controller : MonoBehaviour
         CamControl();
         if (Input.GetKeyDown("space") && focused_on_planet == false)
         {
-            Cel_Obj = GameObject.Find("SUN");
-            FixCameraPlanet(Cel_Obj.transform);
+            Current_Planet = GameObject.Find("SUN");
+            FixCameraPlanet(Current_Planet.transform);
         }
         else if (Input.GetKeyDown("space") && focused_on_planet == true) {
             UnfixCameraPlanet();
