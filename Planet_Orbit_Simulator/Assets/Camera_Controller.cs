@@ -62,8 +62,8 @@ public class Camera_Controller : MonoBehaviour
         Target.transform.SetParent(null);
         Target.transform.rotation = Quaternion.identity;
         Target.transform.localScale = Vector3.one;
-        Target.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-        Camera.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        Target.transform.position = position + new Vector3(0.0f, 0.0f, 0.0f);
+        Camera.transform.position = position + new Vector3(0.0f, 0.0f, 0.0f);
         Camera.transform.rotation = Quaternion.identity;
         focused_on_planet = false;
 
