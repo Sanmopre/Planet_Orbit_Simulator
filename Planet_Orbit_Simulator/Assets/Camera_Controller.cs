@@ -48,8 +48,8 @@ public class Camera_Controller : MonoBehaviour
         Target.transform.rotation = Quaternion.identity;
         Target.transform.localScale = Vector3.one;
 
-        Camera.transform.position = new Vector3(0.0f, 0.0f, -350.0f);
-        Camera.transform.rotation = Quaternion.identity;
+        Camera.transform.position = new Vector3(0.0f, 0.0f, -350.0f) + Cel_Position;
+        transform.LookAt(Target);
         focused_on_planet = true;
     }
 
