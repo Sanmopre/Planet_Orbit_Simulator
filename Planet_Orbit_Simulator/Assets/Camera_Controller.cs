@@ -8,18 +8,25 @@ public class Camera_Controller : MonoBehaviour
     public float RotationSpeed = 1;
     public Transform Target;
 
+    enum Cam_mode { FreeCam,Planet};
+
+    Cam_mode cam_mode;
+
     public Transform Camera;
 
-    public GameObject Current_Planet;
+    public Celestial_Object[] Current_Planet_list;
+    public Celestial_Object Current_Planet;
     float mouseX, mouseY;
 
     public bool focused_on_planet = false;
 
+    private int iterator = 1;
 
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        cam_mode = Cam_mode.FreeCam;
     }
 
 
@@ -54,7 +61,8 @@ public class Camera_Controller : MonoBehaviour
     }
 
 
-    public void UnfixCameraPlanet() {
+    public void UnfixCameraPlanet() 
+    {
 
 
         Vector3 position = Target.parent.transform.position;
@@ -68,22 +76,48 @@ public class Camera_Controller : MonoBehaviour
         focused_on_planet = false;
 
     }
-    
+
+
+
+    void Sawp_Cam_Mode() {
+        if (cam_mode == Cam_mode.FreeCam)
+        {
+            FixCameraPlanet(Current_Planet_list[iterator].transform);
+            cam_mode = Cam_mode.Planet;
+            iterator++;
+        }
+        else if (cam_mode == Cam_mode.Planet) {
+            UnfixCameraPlanet();
+            cam_mode = Cam_mode.FreeCam;
+        }
+    }
 
     void LateUpdate()
-    {        
-        
+    {
+
+
+       Current_Planet_list = FindObjectsOfType<Celestial_Object>();
+       Current_Planet = Current_Planet_list[iterator];
+
         CamControl();
-        if (Input.GetKeyDown("space") && focused_on_planet == false)
-        {
-            Current_Planet = GameObject.Find("SUN");
-            FixCameraPlanet(Current_Planet.transform);
-        }
-        else if (Input.GetKeyDown("space") && focused_on_planet == true) {
-            UnfixCameraPlanet();
+     
+
+        if (Input.GetKeyDown("space")){
+            Sawp_Cam_Mode();
         }
 
+        if (iterator >= Current_Planet_list.Length) {
+            iterator = 0;
+        }
 
+        
+        if (cam_mode == Cam_mode.Planet && Input.GetKeyDown(KeyCode.F)) {
+            if (iterator < Current_Planet_list.Length)
+            {
+                FixCameraPlanet(Current_Planet_list[iterator].transform);
+            }
+            iterator++;
+        }
 
     }
 }

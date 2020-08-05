@@ -28,7 +28,7 @@ public class Text_Controller : MonoBehaviour
             t_mass.text = "Mass" + cel_obj.Rb.mass.ToString();            
             Vector3 Force = celestalManager.Get_Force_At_Planet(cel_obj);
 
-            t_force.text = "Force X:" + Force.x.ToString() +  "Y:" + Force.y.ToString() + "Z:" + Force.z.ToString() ;
+            t_force.text = "Force applied to planet"  +  "X:" + Force.x.ToString() +  "Y:" + Force.y.ToString() + "Z:" + Force.z.ToString() ;
 
 
         }
