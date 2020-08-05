@@ -5,7 +5,7 @@ using UnityEngine;
 public class Celestial_Object : MonoBehaviour
 {
     public Rigidbody Rb;
-    float G = 0.00000000000667f;
+    float G = 0.000000000006674f;
 
     public Vector3 Initial_Velocity;
     Vector3 Current_Force;

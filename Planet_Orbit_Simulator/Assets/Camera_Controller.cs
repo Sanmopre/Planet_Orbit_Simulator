@@ -55,6 +55,10 @@ public class Camera_Controller : MonoBehaviour
 
 
     public void UnfixCameraPlanet() {
+
+
+        Vector3 position = Target.parent.transform.position;
+
         Target.transform.SetParent(null);
         Target.transform.rotation = Quaternion.identity;
         Target.transform.localScale = Vector3.one;
