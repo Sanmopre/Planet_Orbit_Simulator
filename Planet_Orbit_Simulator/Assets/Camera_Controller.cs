@@ -81,10 +81,11 @@ public class Camera_Controller : MonoBehaviour
 
     void Sawp_Cam_Mode() {
         if (cam_mode == Cam_mode.FreeCam)
-        {
+        {            
+            iterator++;
             FixCameraPlanet(Current_Planet_list[iterator].transform);
             cam_mode = Cam_mode.Planet;
-            iterator++;
+
         }
         else if (cam_mode == Cam_mode.Planet) {
             UnfixCameraPlanet();
